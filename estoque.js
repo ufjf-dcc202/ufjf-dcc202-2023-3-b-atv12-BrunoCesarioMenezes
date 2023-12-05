@@ -8,3 +8,9 @@ let estoque = {
         'pera': 3
     }
 }
+
+function getEstoque(){
+    return structuredClone(estoque);
+}
+
+export {getEstoque};
