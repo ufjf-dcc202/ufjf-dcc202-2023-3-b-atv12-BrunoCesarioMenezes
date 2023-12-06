@@ -21,18 +21,17 @@ function leFormulario(event){
 
 function atualizaTela(){
     const estoque = getEstoque();
-    olJoao.innerHTML = "";
-    for (let i=0; i<estoque.joao.length; i++){
-        const monte = estoque.joao[i];
+    preencheLista (olJoao, estoque.joao);
+    preencheLista (olMaria, estoque.maria);
+    
+}
+
+function preencheLista (lista, estoqueDaPessoa){
+    lista.innerHTML = "";
+    for (let i=0; i<estoqueDaPessoa.length; i++){
+        const monte = estoqueDaPessoa[i];
         const li = document.createElement('li');
         li.textContent=`${monte.tipo}: ${monte.qtd}`;
-        olJoao.append(li);
-    }
-    olMaria.innerHTML = "";
-    for (let i=0; i<estoque.maria.length; i++){
-        const monte = estoque.maria[i];
-        const li = document.createElement('li');
-        li.textContent=`${monte.tipo}: ${monte.qtd}`;
-        olMaria.append(li);
+        lista.append(li);
     }
 }
