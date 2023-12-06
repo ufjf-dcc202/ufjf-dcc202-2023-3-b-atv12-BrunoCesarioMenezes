@@ -28,4 +28,11 @@ function atualizaTela(){
         li.textContent=`${monte.tipo}: ${monte.qtd}`;
         olJoao.append(li);
     }
+    olMaria.innerHTML = "";
+    for (let i=0; i<estoque.maria.length; i++){
+        const monte = estoque.maria[i];
+        const li = document.createElement('li');
+        li.textContent=`${monte.tipo}: ${monte.qtd}`;
+        olMaria.append(li);
+    }
 }
