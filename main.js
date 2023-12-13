@@ -1,9 +1,12 @@
-import {getEstoque, transacaoNoEstoque} from "./estoque.js";
+import {getEstoque, transacaoNoEstoque, limpaEstoque} from "./estoque.js";
 
 const olJoao = document.querySelector("ol#joao");
 const olMaria = document.querySelector("ol#maria");
 
 document.entrada.addEventListener('submit', leFormulario);
+document.entrada.reset();
+
+document.getElementById("LimparLista").addEventListener('click',reiniciaTela);
 
 atualizaTela();
 
@@ -17,12 +20,16 @@ function leFormulario(event){
 
     console.log(`${origem} doa ${quantidade} ${fruta} para ${destino}`);
 
-    transacao (origem, destino, fruta, quantidade);
+    transacaoNoEstoque (origem, destino, fruta, quantidade);
     atualizaTela();
 }
 
 function atualizaTela(){
     const estoque = getEstoque();
+    olJoao.innerHTML = "";
+    olMaria.innerHTML = "";
+    document.entrada.quantidade.value = 1;
+    document.entrada.fruta.value = "maca";
     preencheLista (olJoao, estoque.joao);
     preencheLista (olMaria, estoque.maria);
     
@@ -30,10 +37,17 @@ function atualizaTela(){
 
 function preencheLista (lista, estoqueDaPessoa){
     lista.innerHTML = "";
-    for (let i=0; i<estoqueDaPessoa.length; i++){
-        const monte = estoqueDaPessoa[i];
-        const li = document.createElement('li');
-        li.textContent=`${monte.tipo}: ${monte.qtd}`;
-        lista.append(li);
+    if(Array.isArray(estoqueDaPessoa)){
+        for (let i=0; i<estoqueDaPessoa.length; i++){
+            const monte = estoqueDaPessoa[i];
+            const li = document.createElement('li');
+            li.textContent=`${monte.tipo}: ${monte.qtd}`;
+            lista.append(li);
+        }
     }
+}
+
+function reiniciaTela(){
+    limpaEstoque();
+    atualizaTela();
 }
