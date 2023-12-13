@@ -1,4 +1,4 @@
-import {getEstoque, transacao} from "./estoque.js";
+import {getEstoque, transacaoNoEstoque} from "./estoque.js";
 
 const olJoao = document.querySelector("ol#joao");
 const olMaria = document.querySelector("ol#maria");
