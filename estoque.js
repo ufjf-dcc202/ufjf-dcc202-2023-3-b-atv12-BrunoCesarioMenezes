@@ -76,4 +76,8 @@ function dePessoaParaPomar (origem, tipo, quantidade){
         }
 }
 
-export {getEstoque,transacaoNoEstoque};
+function limpaEstoque(){
+    estoque = {};
+}
+
+export {getEstoque,transacaoNoEstoque, limpaEstoque};
