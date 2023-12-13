@@ -1,3 +1,4 @@
 {
-    "testing.automaticallyOpenPeekView": "never"
+    "testing.automaticallyOpenPeekView": "never",
+    "liveServer.settings.port": 5501
 }
